@@ -64,25 +64,26 @@ public class TwoBigArrays {
 //John 5
 //Nick 4.75
 //Jack 3.333
-    public static void studentsGrade(String[] students, int n, int[][] grades) {
+    public static void studentsGrade(String[] students, int n, int[][] grades) { // n is the length of the array of students and it's equal to number
+                                                                                 // of rows the grades array. So, I think, you should not pass n as an argument
         double sum = 0;
         double max = 0;
         int maxRow = 0;
         double gpa = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < grades.length; i++) {
             for (int j = 0; j < grades[i].length; j++) {
                 sum = sum + grades[i][j];
 
             }
-            gpa = sum / (grades[i].length + 1);
+            gpa = sum /grades[i].length;  //why grades[i].length+1 ?
             if (gpa > max) {
                 max = gpa;
                 maxRow = i;
                 sum = 0;
 
-            } else {
+            } /* else {    // i think, you do not need increment i here 
                 i++;
-            }
+            } */
 
         }
         System.out.println(students[maxRow] + " is student with max GPA = " + gpa);
